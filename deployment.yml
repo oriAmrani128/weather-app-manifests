@@ -21,6 +21,6 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: oriamrani/weather-app:${COMMIT_TAG}
+        image: oriamrani/weather-app:latest
         ports:
         - containerPort: 8000
