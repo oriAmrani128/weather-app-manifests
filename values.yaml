@@ -1,0 +1,25 @@
+replicaCount: 3
+
+image:
+  repository: oriamrani/weather-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+  nodePort: 30080
+
+containerPort: 8000
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: weather-app.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
